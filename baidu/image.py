@@ -14,16 +14,17 @@ def get_file_content(filePath):
     with open(filePath, 'rb') as fp:
         return fp.read()
 
-image = get_file_content('lion.jpg')
+image = get_file_content('1.jpg')
 
 
 """ 调用通用物体识别 """
-result = client.advancedGeneral(image);
+result = client.advancedGeneral(image)
 
-print(result)
 
-with open("lion.txt", "w", encoding="utf-8") as f:
-	f.write(json.dumps(result,ensure_ascii=True))
+print(result["result"][0]["root"] + " : " + result["result"][0]["keyword"])
+
+# with open("lion.txt", "w", encoding="utf-8") as f:
+# 	f.write(json.dumps(result,ensure_ascii=True))
 
 
 """ 调用菜品识别 """
