@@ -1,0 +1,30 @@
+
+1. 使用tesseract生成.box文件：
+tesseract lpp.normal.exp0.tif lpp.normal.exp0 -l lpp -psm 7 batch.nochop makebox
+
+2. 生成font_properties文件：（该文件没有后缀名）
+echo normal 0 0 0 0 0 >font_properties
+
+3. 使用tesseract生成.tr训练文件:
+tesseract lpp.normal.exp0.tif lpp.normal.exp0 nobatch box.train
+
+4. 生成字符集文件：
+unicharset_extractor lpp.normal.exp0.box
+
+5. 生成 shapetable 和 zwp.unicharset 两个文件
+shapeclustering -F font_properties -U unicharset -O lpp.unicharset lpp.normal.exp0.tr
+
+6. 生成聚字符特征文件：执行下面命令，会生成 inttemp、pffmtable、shapetable和zwp.unicharset四个文件。
+mftraining -F font_properties -U unicharset -O lpp.unicharset lpp.normal.exp0.tr
+
+7. 生成字符正常化特征文件,执行下面命令，会生成 normproto 文件。
+cntraining lpp.normal.exp0.tr
+
+8. 文件重命名：
+重新命名inttemp、pffmtable、shapetable和normproto这四个文件的名字为[lang].xxx。
+
+9. 合并训练文件：
+combine_tessdata lpp.
+
+10. 将生成的“lpp.traineddata”语言包文件复制到Tesseract-OCR 安装目录下的tessdata文件夹中，就可以使用训练生成的语言包进行图像文字识别了。
+
