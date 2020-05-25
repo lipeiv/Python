@@ -1,3 +1,5 @@
+ https://hacknote.jp/archives/56888/
+
  sudo timedatectl set-timezone Asia/Tokyo
  sudo yum -y update
  sudo yum -y install git gcc ncurses-devel readline-devel openssl-devel zlib-devel
