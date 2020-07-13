@@ -14,8 +14,10 @@
 # else:
 # 	print("字典中bundle_id为:", app["bundle_id"])
 
-bundleid = [{"bundle":None}, {"bundle":'valuepush'}, {"bundle":''}]
+# bundleid = [{"bundle":None}, {"bundle":'valuepush'}, {"bundle":''}]
 
-for i in bundleid:
-	if not i['bundle']:
-		print("Error")
+# for i in bundleid:
+# 	if not i['bundle']:
+# 		print("Error")
+# 	else:
+# 		print("OK")
